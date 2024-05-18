@@ -3,13 +3,16 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require("bcrypt")
 const jwtToken = require('jsonwebtoken');
+const dotEnv = require('dotenv')
 
 const app = express();
 
 app.use(cors());
 app.use(express.json())
 
-mongoose.connect("mongodb+srv://vijenderchimma424:Vijju213@cluster1.dpb0imq.mongodb.net/?retryWrites=true&w=majority")
+dotEnv.config()
+
+mongoose.connect()
 
 const schema = new mongoose.Schema({
     state: String,
