@@ -4,6 +4,8 @@ const cors = require('cors');
 const bcrypt = require("bcrypt")
 const jwtToken = require('jsonwebtoken');
 const dotEnv = require('dotenv')
+const path = require('path')
+const PORT = process.env.PORT || 3001
 
 const app = express();
 
@@ -12,7 +14,7 @@ app.use(express.json())
 
 dotEnv.config()
 
-mongoose.connect()
+mongoose.connect(process.env.MONGO_URI)
 
 const schema = new mongoose.Schema({
     state: String,
@@ -236,8 +238,8 @@ app.post("/login", async (req,res)=>{
 
 
 
-app.listen(3001, () => {
-    console.log('server is running\n http://localhost:3001')
+app.listen(PORT, () => {
+    console.log(`server is running\n http://localhost:${PORT}`)
 })
 
 
